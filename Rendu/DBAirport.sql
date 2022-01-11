@@ -215,5 +215,3 @@ CREATE TABLE DBairport.dbo.flights
     -- specify more columns here
 );
 GO
-
-
