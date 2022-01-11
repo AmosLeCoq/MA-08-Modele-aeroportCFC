@@ -1,10 +1,14 @@
-CREATE DATABASE DBairport
+DROP DATABASE DBairport;
 
-CREATE TABLE gate (
+CREATE DATABASE DBairport;
+
+USE DBairport;
+
+CREATE TABLE gates (
     id INT NOT NULL,
     name VARCHAR(5) NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE providers (
     id INT NOT NULL,
