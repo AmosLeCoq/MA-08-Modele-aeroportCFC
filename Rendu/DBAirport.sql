@@ -2,7 +2,19 @@
 -- Connect to the 'master' database to run this snippet
 USE master
 GO
+ 
 -- Create the new database if it does not exist already
+
+IF EXISTS (
+	 SELECT name
+			FROM sys.databases
+			WHERE name = N'DBairport'
+	
+)
+DROP DATABASE DBairport
+
+GO
+
 IF NOT EXISTS (
     SELECT name
         FROM sys.databases
@@ -89,13 +101,13 @@ CREATE TABLE DBairport.dbo.companys
 GO
 
 
--- Create a new table called 'airport' in schema 'DBairport'
+-- Create a new table called 'airports' in schema 'DBairport'
 -- Drop the table if it already exists
-IF OBJECT_ID('DBairport.dbo.airport', 'U') IS NOT NULL
-DROP TABLE DBairport.dbo.airport
+IF OBJECT_ID('DBairport.dbo.airports', 'U') IS NOT NULL
+DROP TABLE DBairport.dbo.airports
 GO
 -- Create the table in the specified schema
-CREATE TABLE DBairport.dbo.airport
+CREATE TABLE DBairport.dbo.airports
 (
     id INT NOT NULL PRIMARY KEY, -- primary key column
     name [VARCHAR](30) NOT NULL,
