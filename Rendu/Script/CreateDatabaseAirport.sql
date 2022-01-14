@@ -31,7 +31,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.gates
 (
-    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY,-- primary key column
     name [VARCHAR](5) NOT NULL
     -- specify more columns here
 );
@@ -47,7 +47,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.providers
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](20) NOT NULL
     -- specify more columns here
 );
@@ -78,7 +78,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.builders
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](25) NOT NULL
     -- specify more columns here
 );
@@ -94,7 +94,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.companys
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](20) NOT NULL
     -- specify more columns here
 );
@@ -109,7 +109,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.airports
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](30) NOT NULL,
     city [VARCHAR](20) NOT NULL
     -- specify more columns here
@@ -126,7 +126,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.status
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](10) NOT NULL
     -- specify more columns here
 );
@@ -141,7 +141,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.tracks
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+   id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name INT NOT NULL
     -- specify more columns here
 );
@@ -176,7 +176,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.models
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](15) NOT NULL,
     builder_id INT NOT NULL FOREIGN KEY REFERENCES builders(id)
     -- specify more columns here
@@ -194,7 +194,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.providers_provide_fuels
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+   id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](15) NOT NULL,
     provider_id INT NOT NULL FOREIGN KEY REFERENCES providers(id),
     fuel_id INT NOT NULL FOREIGN KEY REFERENCES fuels(id)
@@ -212,7 +212,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.flights
 (
-    id INT NOT NULL PRIMARY KEY, -- primary key column
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     N_flight INT NOT NULL,
     takeOffTime [VARCHAR](5),
     landTime [VARCHAR](5),
