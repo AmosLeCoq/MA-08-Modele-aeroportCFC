@@ -32,43 +32,11 @@ GO
 CREATE TABLE DBairport.dbo.gates
 (
     id INT NOT NULL IDENTITY PRIMARY KEY,-- primary key column
-    name [VARCHAR](5) NOT NULL
+    name [VARCHAR](5) NOT NULL,
+    terminal [VARCHAR](10) NOT NULL
     -- specify more columns here
 );
 GO
-
-
-
--- Create a new table called 'providers' in schema 'SchemaName'
--- Drop the table if it already exists
-IF OBJECT_ID('DBairport.dbo.providers', 'U') IS NOT NULL
-DROP TABLE DBairport.dbo.providers
-GO
--- Create the table in the specified schema
-CREATE TABLE DBairport.dbo.providers
-(
-    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](20) NOT NULL
-    -- specify more columns here
-);
-GO
-
-
-
--- Create a new table called 'fuels' in schema 'SchemaName'
--- Drop the table if it already exists
-IF OBJECT_ID('DBairport.dbo.fuels', 'U') IS NOT NULL
-DROP TABLE DBairport.dbo.fuels
-GO
--- Create the table in the specified schema
-CREATE TABLE DBairport.dbo.fuels
-(
-    id INT NOT NULL PRIMARY KEY, -- primary key column
-    name [VARCHAR](15) NOT NULL
-    -- specify more columns here
-);
-GO
-
 
 -- Create a new table called 'builders' in schema 'DBairport'
 -- Drop the table if it already exists
@@ -84,8 +52,6 @@ CREATE TABLE DBairport.dbo.builders
 );
 GO
 
-
-
 -- Create a new table called 'companys' in schema 'DBairport'
 -- Drop the table if it already exists
 IF OBJECT_ID('DBairport.dbo.companys', 'U') IS NOT NULL
@@ -95,7 +61,7 @@ GO
 CREATE TABLE DBairport.dbo.companys
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](20) NOT NULL
+    name [VARCHAR](20) NOT NULL UNIQUE
     -- specify more columns here
 );
 GO
@@ -127,7 +93,7 @@ GO
 CREATE TABLE DBairport.dbo.status
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](10) NOT NULL
+    Type [VARCHAR](10) NOT NULL UNIQUE
     -- specify more columns here
 );
 GO
@@ -141,13 +107,11 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE DBairport.dbo.tracks
 (
-   id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name INT NOT NULL
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
+    TrackN INT NOT NULL UNIQUE
     -- specify more columns here
 );
 GO
-
-
 
 -- Create a new table called 'planes' in schema 'DBairport'
 -- Drop the table if it already exists
@@ -158,16 +122,11 @@ GO
 CREATE TABLE DBairport.dbo.planes
 (
     id INT NOT NULL IDENTITY PRIMARY KEY,
-    name [VARCHAR](25) NOT NULL,
+    TimeAndDate [VARCHAR](25) NOT NULL,
     company_id INT FOREIGN KEY REFERENCES companys(id),
-    fuel_id INT FOREIGN KEY REFERENCES fuels(id)
     -- specify more columns here
 );
 GO
-
-
-
-
 -- Create a new table called 'models' in schema 'DBairport'
 -- Drop the table if it already exists
 IF OBJECT_ID('DBairport.dbo.models', 'U') IS NOT NULL
@@ -177,32 +136,11 @@ GO
 CREATE TABLE DBairport.dbo.models
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](15) NOT NULL,
+    name [VARCHAR](15) NOT NULL UNIQUE,
     builder_id INT NOT NULL FOREIGN KEY REFERENCES builders(id)
     -- specify more columns here
 );
 GO
-
-
-
-
--- Create a new table called 'providers_provide_fuels' in schema 'DBairport'
--- Drop the table if it already exists
-IF OBJECT_ID('DBairport.dbo.providers_provide_fuels', 'U') IS NOT NULL
-DROP TABLE DBairport.dbo.providers_provide_fuels
-GO
--- Create the table in the specified schema
-CREATE TABLE DBairport.dbo.providers_provide_fuels
-(
-   id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](15) NOT NULL,
-    provider_id INT NOT NULL FOREIGN KEY REFERENCES providers(id),
-    fuel_id INT NOT NULL FOREIGN KEY REFERENCES fuels(id)
-    -- specify more columns here
-);
-GO
-
-
 
 -- Create a new table called 'flights' in schema 'DBairport'
 -- Drop the table if it already exists
