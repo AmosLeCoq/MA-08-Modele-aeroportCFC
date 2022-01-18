@@ -33,7 +33,7 @@ CREATE TABLE DBairport.dbo.gates
 (
     id INT NOT NULL IDENTITY PRIMARY KEY,-- primary key column
     name [VARCHAR](5) NOT NULL,
-    terminal [VARCHAR](10) NOT NULL
+    terminal NUMERIC NOT NULL
     -- specify more columns here
 );
 GO
@@ -48,6 +48,21 @@ CREATE TABLE DBairport.dbo.builders
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     name [VARCHAR](25) NOT NULL
+    -- specify more columns here
+);
+GO
+
+-- Create a new table called 'models' in schema 'DBairport'
+-- Drop the table if it already exists
+IF OBJECT_ID('DBairport.dbo.models', 'U') IS NOT NULL
+DROP TABLE DBairport.dbo.models
+GO
+-- Create the table in the specified schema
+CREATE TABLE DBairport.dbo.models
+(
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
+    name [VARCHAR](15) NOT NULL UNIQUE,
+    builders_id INT NOT NULL FOREIGN KEY REFERENCES builders(id)
     -- specify more columns here
 );
 GO
@@ -122,22 +137,8 @@ GO
 CREATE TABLE DBairport.dbo.planes
 (
     id INT NOT NULL IDENTITY PRIMARY KEY,
-    TimeAndDate [VARCHAR](25) NOT NULL,
-    company_id INT FOREIGN KEY REFERENCES companys(id),
-    -- specify more columns here
-);
-GO
--- Create a new table called 'models' in schema 'DBairport'
--- Drop the table if it already exists
-IF OBJECT_ID('DBairport.dbo.models', 'U') IS NOT NULL
-DROP TABLE DBairport.dbo.models
-GO
--- Create the table in the specified schema
-CREATE TABLE DBairport.dbo.models
-(
-    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](15) NOT NULL UNIQUE,
-    builder_id INT NOT NULL FOREIGN KEY REFERENCES builders(id)
+    name [VARCHAR](5) NOT NULL,
+    company_id INT FOREIGN KEY REFERENCES companys(id)
     -- specify more columns here
 );
 GO
@@ -152,8 +153,8 @@ CREATE TABLE DBairport.dbo.flights
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
     N_flight INT NOT NULL,
-    takeOffTime [VARCHAR](5),
-    landTime [VARCHAR](5),
+    takeOffTime DATETIME,
+    landTime DATETIME,
     date DATE,
     plane_id INT NOT NULL FOREIGN KEY REFERENCES planes(id),
     statu_id INT NOT NULL FOREIGN KEY REFERENCES status(id),
@@ -162,6 +163,24 @@ CREATE TABLE DBairport.dbo.flights
     airportArrival_id INT NOT NULL FOREIGN KEY REFERENCES airports(id),
     trackDeparture_id INT NOT NULL FOREIGN KEY REFERENCES tracks(id),
     trackArrival_id INT NOT NULL FOREIGN KEY REFERENCES tracks(id)
+    -- specify more columns here
+);
+GO
+
+-- Create a new table called 'travelers' in schema 'SchemaName'
+-- Drop the table if it already exists
+IF OBJECT_ID('DBairport.dbo.travelers', 'U') IS NOT NULL
+DROP TABLE DBairport.dbo.travelers
+GO
+-- Create the table in the specified schema
+CREATE TABLE DBairport.dbo.travelers
+(
+    id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
+    name [VARCHAR](20) NOT NULL,
+    lastname [VARCHAR](20) NOT NULL,
+    birthday DATE NOT NULL,
+    phone [VARCHAR](12) NOT NULL,
+    gender [VARCHAR](1) NOT NULL
     -- specify more columns here
 );
 GO
