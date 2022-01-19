@@ -176,11 +176,11 @@ GO
 CREATE TABLE DBairport.dbo.travelers
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](20) NOT NULL,
-    lastname [VARCHAR](20) NOT NULL,
+    name [VARCHAR](30) NOT NULL,
+    lastname [VARCHAR](30) NOT NULL,
     birthday DATE NOT NULL,
     phone [VARCHAR](12) NOT NULL,
     gender [VARCHAR](1) NOT NULL
-    -- specify more columns here
+
 );
 GO
