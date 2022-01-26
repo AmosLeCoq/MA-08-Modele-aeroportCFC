@@ -233,6 +233,15 @@ VALUES
   ('Annulé');
 GO
 
+INSERT INTO [DBairport].[dbo].[tracks] (TrackN)
+VALUES
+  (1),
+  (2),
+  (3),
+  (4),
+  (5);
+GO
+
 INSERT INTO  [DBairport].[dbo].[travelers] (name, lastname, birthday, phone, gender)
 VALUES 
   ('Lonna', 'Hartus', '1987/09/07', '198-824-7525', 'F'),
