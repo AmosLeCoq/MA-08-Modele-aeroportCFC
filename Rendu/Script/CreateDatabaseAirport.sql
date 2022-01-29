@@ -47,7 +47,7 @@ GO
 CREATE TABLE DBairport.dbo.builders
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](25) NOT NULL
+    name [VARCHAR](60) NOT NULL
     -- specify more columns here
 );
 GO
@@ -61,7 +61,7 @@ GO
 CREATE TABLE DBairport.dbo.models
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](15) NOT NULL UNIQUE,
+    name [VARCHAR](20) NOT NULL UNIQUE,
     builders_id INT NOT NULL FOREIGN KEY REFERENCES builders(id)
     -- specify more columns here
 );
@@ -76,7 +76,7 @@ GO
 CREATE TABLE DBairport.dbo.companys
 (
     id INT NOT NULL IDENTITY PRIMARY KEY, -- primary key column
-    name [VARCHAR](20) NOT NULL UNIQUE
+    name [VARCHAR](60) NOT NULL UNIQUE
     -- specify more columns here
 );
 GO
